@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>{{ metaTitle }}</title>
+<meta name="description" content="{{ metaDescription }}" />
+<link rel="canonical" href="{{ canonical }}" />
+<meta property="og:title" content="{{ ogTitle or metaTitle }}" />
+<meta property="og:description" content="{{ metaDescription }}" />
+<meta property="og:type" content="{{ ogType or 'website' }}" />
+<meta property="og:url" content="{{ canonical }}" />
+<meta property="og:image" content="{{ ogImage or 'https://www.landandexpand.it/assets/og-image.png' }}" />
+<meta name="twitter:card" content="summary_large_image" />
+<link rel="icon" type="image/png" sizes="32x32" href="/assets/logos/favicon-32.png" />
+<link rel="icon" type="image/png" sizes="256x256" href="/assets/logos/favicon.png" />
+<link rel="apple-touch-icon" href="/assets/logos/favicon.png" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="/styles.css" />
+<script>document.documentElement.classList.add("js");</script>
+</head>
+<body>
+
+<header class="nav scrolled" id="nav">
+  <div class="nav__inner">
+    <a href="/index.html#top" class="nav__logo" aria-label="Land and Expand">
+      <img src="/assets/logos/le-white-name.png" alt="Land and Expand" />
+    </a>
+    <nav class="nav__links">
+      <a href="/index.html#percorso">Architettura</a>
+      <a href="/index.html#tecnologie">Tecnologie</a>
+      <a href="/index.html#valore">Valore</a>
+      <a href="/index.html#team">Team</a>
+      <a href="/blog">Blog</a>
+    </nav>
+    <div class="nav__actions">
+      <a href="https://www.linkedin.com/company/land-and-expand/" target="_blank" rel="noopener" class="icon-btn" aria-label="LinkedIn Land and Expand">
+        <svg viewBox="0 0 24 24"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.42v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 1 1 0-4.13 2.06 2.06 0 0 1 0 4.13zM7.12 20.45H3.55V9h3.57v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.72v20.56C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.72V1.72C24 .77 23.2 0 22.22 0z"/></svg>
+      </a>
+      <a href="/index.html#contatti" class="btn btn--primary btn--sm">Contattaci</a>
+    </div>
+  </div>
+</header>
+
+<main>
+{{ content | safe }}
+</main>
+
+<footer class="footer">
+  <div class="wrap">
+    <div class="footer__top">
+      <div class="footer__brand">
+        <img src="/assets/logos/le-white-name.png" alt="Land and Expand" />
+        <p>Un ecosistema modulare per OT, IoT e infrastrutture critiche. Connect · Discover · Detect · Operate · Optimize.</p>
+      </div>
+      <div class="footer__cols">
+        <div class="footer__col">
+          <h4>Architettura</h4>
+          <a href="/index.html#percorso">Connect</a>
+          <a href="/index.html#percorso">Discover</a>
+          <a href="/index.html#percorso">Detect</a>
+          <a href="/index.html#percorso">Operate</a>
+          <a href="/index.html#percorso">Optimize</a>
+        </div>
+        <div class="footer__col">
+          <h4>Risorse</h4>
+          <a href="/blog">Blog</a>
+          <a href="/index.html#tecnologie">Tecnologie</a>
+          <a href="/index.html#valore">Valore</a>
+          <a href="/index.html#team">Team</a>
+        </div>
+        <div class="footer__col">
+          <h4>Contatti</h4>
+          <a href="mailto:alberto.nardi@landandexpand.it">Email</a>
+          <a href="https://www.linkedin.com/company/land-and-expand/" target="_blank" rel="noopener">LinkedIn</a>
+          <a href="https://www.landandexpand.it" target="_blank" rel="noopener">landandexpand.it</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer__bar">
+      <span>© 2026 Land and Expand di Alberto Nardi — P.IVA IT02749380206</span>
+      <span class="footer__legal"><a href="/privacy.html">Privacy Policy</a> · <a href="/termini.html">Termini e Condizioni</a></span>
+      <span>Landing innovation. Expanding success.</span>
+    </div>
+  </div>
+</footer>
+
+<script src="/script.js"></script>
+</body>
+</html>

@@ -1,0 +1,141 @@
+# Configurazione del pannello contenuti (Sveltia CMS)
+# ----------------------------------------------------
+# backend.repo va impostato con il repository GitHub reale (owner/nome)
+# quando il sito viene collegato a GitHub + Netlify (fatto in fase di setup).
+
+backend:
+  name: github
+  repo: mattiacm28/land-and-expand-site
+  branch: main
+  # L'autenticazione passa dal broker OAuth di Netlify (gratuito, nessun server da gestire).
+
+# Lingua dell'interfaccia del pannello
+locale: it
+
+# Cartella dove finiscono le immagini caricate dal pannello
+media_folder: "src/assets/uploads"
+public_folder: "/assets/uploads"
+
+# Mostra un messaggio se si tenta di uscire con modifiche non salvate
+publish_mode: simple
+
+collections:
+  - name: blog
+    label: "Articoli del blog"
+    label_singular: "Articolo"
+    description: "Scrivi, modifica e pubblica gli articoli del blog di Land and Expand."
+    folder: "src/blog"
+    create: true
+    delete: true
+    extension: md
+    format: frontmatter
+    slug: "{{slug}}"
+    # Anteprima: apre la pagina reale sul sito (disponibile dopo la pubblicazione)
+    preview_path: "blog/{{slug}}"
+    sortable_fields: [date, title]
+    view_filters:
+      - { label: "Solo pubblicati", field: published, pattern: true }
+      - { label: "Solo bozze", field: published, pattern: false }
+    fields:
+      - name: title
+        label: "Titolo (compare come titolo grande e nelle anteprime social)"
+        widget: string
+
+      - name: seo_title
+        label: "Titolo SEO (scheda del browser e risultato Google)"
+        widget: string
+        required: false
+        hint: "Se lo lasci vuoto viene usato il Titolo. Compare come «Titolo SEO | Land and Expand»."
+
+      - name: description
+        label: "Descrizione SEO (meta description)"
+        widget: text
+        hint: "120–160 caratteri. È il testo che compare sotto il titolo su Google e nelle condivisioni."
+
+      - name: category
+        label: "Categoria (etichetta breve)"
+        widget: string
+        hint: "Esempi: Visibilità OT, Incident Response OT, Connettività & Continuità."
+
+      - name: dek
+        label: "Sottotitolo (riga sotto il titolo nell'articolo)"
+        widget: text
+
+      - name: excerpt
+        label: "Riassunto breve (card nell'elenco del blog)"
+        widget: text
+        hint: "Una o due frasi che invogliano a leggere."
+
+      - name: icon
+        label: "Icona della card"
+        widget: select
+        default: shield
+        options:
+          - { label: "Scudo", value: shield }
+          - { label: "Lente d'ingrandimento", value: search }
+          - { label: "Scudo con spunta", value: shieldCheck }
+          - { label: "Campanello", value: bell }
+          - { label: "Rete / Wi-Fi", value: wifi }
+          - { label: "Tachimetro", value: gauge }
+
+      - name: date
+        label: "Data di pubblicazione"
+        widget: datetime
+        date_format: "YYYY-MM-DD"
+        time_format: false
+        picker_utc: true
+
+      - name: reading_time
+        label: "Minuti di lettura"
+        widget: number
+        value_type: int
+        min: 1
+        default: 5
+
+      - name: og_image
+        label: "Immagine social (facoltativa)"
+        widget: image
+        required: false
+        hint: "Se vuota si usa l'immagine predefinita del sito."
+
+      - name: cta_title
+        label: "Titolo del riquadro finale (invito al contatto)"
+        widget: string
+        required: false
+        default: "Vuoi approfondire la tua situazione?"
+
+      - name: refs
+        label: "Approfondimenti e risorse (link esterni, facoltativo)"
+        widget: list
+        required: false
+        label_singular: "Link"
+        summary: "{{fields.label}}"
+        fields:
+          - { name: label, label: "Testo mostrato", widget: string }
+          - { name: url, label: "Indirizzo (URL)", widget: string }
+          - name: type
+            label: "Tipo"
+            widget: select
+            default: link
+            options:
+              - { label: "Articolo / pagina", value: link }
+              - { label: "Video", value: video }
+
+      - name: related
+        label: "Articoli collegati — «Da leggere anche» (facoltativo)"
+        widget: list
+        required: false
+        label_singular: "Articolo collegato"
+        hint: "Inserisci lo slug di un articolo esistente (es. asset-visibility-ot)."
+        field: { name: slug, label: "Slug dell'articolo", widget: string }
+
+      - name: published
+        label: "Pubblicato"
+        widget: boolean
+        default: true
+        hint: "Togli la spunta per tenerlo come BOZZA: resta salvato ma non compare sul sito."
+
+      - name: body
+        label: "Contenuto dell'articolo"
+        widget: markdown
+        hint: "Scrivi qui il testo. Usa i pulsanti per titoli, grassetto, elenchi, citazioni in evidenza, link e immagini."

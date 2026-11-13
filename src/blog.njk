@@ -1,0 +1,35 @@
+---
+layout: base.njk
+permalink: /blog/index.html
+metaTitle: "Blog — Land and Expand | OT, IoT & Cybersecurity industriale"
+metaDescription: "Approfondimenti su cybersecurity OT/IoT, visibilità degli asset industriali, continuità operativa, gestione degli incidenti e connettività resiliente."
+canonical: "https://www.landandexpand.it/blog"
+ogType: "website"
+---
+<section class="blog-hero">
+  <div class="wrap">
+    <span class="eyebrow">Blog &amp; insight</span>
+    <h1 class="h2">Cybersecurity OT/IoT,<br><span class="grad-text">senza rumore.</span></h1>
+    <p class="lead">Approfondimenti pratici su visibilità degli asset, continuità operativa, gestione degli incidenti e connettività industriale. Un concetto per volta, pensato per chi gestisce impianti e infrastrutture.</p>
+
+    <div class="blog-grid">
+{%- for post in collections.post %}
+      <article class="post">
+        <a class="post__link" href="/blog/{{ post.fileSlug }}">
+          <div class="post__thumb"><svg viewBox="0 0 24 24">{{ icons[post.data.icon] | safe }}</svg></div>
+          <div class="post__body">
+            <span class="post__cat">{{ post.data.category }}</span>
+            <h3>{{ post.data.card_title or post.data.title }}</h3>
+            <p>{{ post.data.excerpt }}</p>
+            <span class="post__more">Leggi l’articolo <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+          </div>
+        </a>
+      </article>
+{%- endfor %}
+    </div>
+
+    <div style="margin-top:48px">
+      <a href="/index.html#contatti" class="btn btn--primary">Vuoi ricevere i nostri contenuti? Contattaci <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+    </div>
+  </div>
+</section>

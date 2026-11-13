@@ -1,0 +1,14 @@
+{
+  "name": "land-and-expand-site",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Sito Land and Expand — motore statico (Eleventy) con pannello di pubblicazione Sveltia CMS",
+  "scripts": {
+    "build": "eleventy",
+    "serve": "eleventy --serve --port=8080",
+    "dev": "eleventy --serve --port=8080"
+  },
+  "devDependencies": {
+    "@11ty/eleventy": "^3.1.8"
+  }
+}

@@ -1,0 +1,50 @@
+---
+layout: base.njk
+---
+<article class="article-hero">
+  <div class="wrap article-wrap">
+    <a href="/blog" class="article__back"><svg viewBox="0 0 24 24"><path d="M19 12H5M11 18l-6-6 6-6"/></svg> Tutti gli articoli</a>
+    <div class="article">
+      <span class="article__cat">{{ category }}</span>
+      <h1>{{ title }}</h1>
+      <p class="article__dek">{{ dek }}</p>
+      <div class="article__meta">
+        <span>Land and Expand</span>
+        <span>{{ date | itMonthYear }}</span>
+        <span>{{ reading_time or (content | readingTime) }} min di lettura</span>
+      </div>
+    </div>
+
+    <div class="prose">
+{{ content | safe }}
+    </div>
+{% if refs and refs.length %}
+    <div class="refs">
+      <div class="refs__kick">Approfondimenti e risorse</div>
+      <div class="refs__list">
+{%- for r in refs %}
+        <a class="refs__item" href="{{ r.url }}" target="_blank" rel="noopener">{% if r.type == "video" %}<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M10 9l5 3-5 3V9z"/></svg>{% else %}<svg viewBox="0 0 24 24"><path d="M14 4h6v6"/><path d="M20 4 10 14"/><path d="M19 13v6a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1h6"/></svg>{% endif %}<span>{{ r.label }}</span></a>
+{%- endfor %}
+      </div>
+    </div>
+{% endif %}
+    <div class="article-cta">
+      <h3>{{ cta_title or site.ctaTitleDefault }}</h3>
+      <p>{{ site.ctaText }}</p>
+      <a href="/index.html#contatti" class="btn btn--primary">Parliamone <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+    </div>
+{% if related and related.length %}
+    <div class="related">
+      <div class="related__kick">Da leggere anche</div>
+      <div class="related__list">
+{%- for slug in related %}{% for rp in collections.post %}{% if rp.fileSlug == slug %}
+        <a class="related__item" href="/blog/{{ rp.fileSlug }}">
+          <span>{{ rp.data.category }}</span>
+          <h4>{{ rp.data.title }}</h4>
+        </a>
+{%- endif %}{% endfor %}{% endfor %}
+      </div>
+    </div>
+{% endif %}
+  </div>
+</article>
