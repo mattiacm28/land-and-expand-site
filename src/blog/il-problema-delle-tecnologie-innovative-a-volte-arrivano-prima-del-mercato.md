@@ -12,7 +12,7 @@ og_image: /assets/uploads/Mercato pronto, visione industriale.png
 cta_title: Vuoi approfondire la tua situazione?
 refs: []
 related: []
-published: false
+published: true
 ---
 
 In oltre 25 anni di attività nel settore IT ho visto nascere ed evolvere tecnologie che hanno cambiato profondamente il modo di lavorare delle aziende.
