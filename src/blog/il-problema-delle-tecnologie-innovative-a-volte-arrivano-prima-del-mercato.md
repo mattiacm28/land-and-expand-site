@@ -5,7 +5,7 @@ description: Perché una buona tecnologia non sempre trova mercato? Il ruolo dei
 category: Business & Innovation
 dek: Una buona tecnologia non basta. Per avere successo servono un problema concreto da risolvere, un mercato pronto e un ecosistema capace di sostenerne l’adozione.
 excerpt: Non tutte le tecnologie innovative incontrano immediatamente il favore del mercato. Una riflessione su cosa determina davvero il successo commerciale di una nuova soluzione tecnologica.
-icon: shield
+icon: search
 date: 2026-11-25
 reading_time: 5
 og_image: /assets/uploads/Mercato pronto, visione industriale.png
