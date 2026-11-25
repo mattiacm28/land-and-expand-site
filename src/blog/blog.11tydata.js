@@ -12,8 +12,11 @@ module.exports = {
     ogImage: (data) => {
       const img = data.og_image;
       if (!img) return "https://www.landandexpand.it/assets/og-image.png";
-      if (/^https?:\/\//.test(img)) return img;
-      return `https://www.landandexpand.it${img.startsWith("/") ? "" : "/"}${img}`;
+      // encodeURI: i nomi file caricati dal pannello possono avere spazi/virgole
+      // (es. "Mercato pronto, visione industriale.png"); LinkedIn/Facebook
+      // non leggono un og:image con spazi non codificati.
+      if (/^https?:\/\//.test(img)) return encodeURI(decodeURI(img));
+      return encodeURI(`https://www.landandexpand.it${img.startsWith("/") ? "" : "/"}${img}`);
     },
   },
 };
